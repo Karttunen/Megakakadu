@@ -2,7 +2,7 @@ import lejos.hardware.Button;
 
 public class totalMain {
 	public static void main(String[] args) {
-		
+		//lelelelele
 		go2 rnn = new go2();
 		slapMotor slap = new slapMotor();
 		
