@@ -8,17 +8,21 @@ public class IRSensor extends Thread {
 	float distance;
 	boolean stopSampling = false;
 	
-	
 	public IRSensor(EV3IRSensor sensor) {
 		this.infraredSensor = sensor;
 	}
+	
+	// return readings
 	public float GetDistance () {
 		return this.distance;
 	}
+	
+	// shuts down the IRSensor
 	public void stopSampling(){
 		stopSampling = true;
 	}
 	
+	// take readings
 	public void run() {
 		while (!stopSampling) {
 			SampleProvider dist = infraredSensor.getDistanceMode();

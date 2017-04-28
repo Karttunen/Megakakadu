@@ -12,6 +12,7 @@ public class go2 {
 		return new go2();
 	}
 	
+	// turn left, while front wheel's speed is 0
 	public void turnLeft(){
 		ma.setSpeed(400);
 		mb.setSpeed(0);
@@ -20,6 +21,7 @@ public class go2 {
 		mb.backward();
 		mc.backward();
 	}
+	// turn left, while front wheel continues to move forward
 	public void steerLeft(){
 		ma.setSpeed(400);
 		mb.setSpeed(200);
@@ -28,6 +30,7 @@ public class go2 {
 		mb.backward();
 		mc.backward();
 	}
+	// turn right, while front wheel's speed is 0
 	public void turnRight(){
 		ma.setSpeed(400);
 		mb.setSpeed(0);
@@ -36,6 +39,7 @@ public class go2 {
 		mb.forward();
 		mc.forward();
 	}
+	// turn right, while front wheel continues to move forward
 	public void steerRight(){
 		ma.setSpeed(400);
 		mb.setSpeed(200);
@@ -44,6 +48,7 @@ public class go2 {
 		mb.forward();
 		mc.forward();
 	}
+	// move forward
 	public void moveForward(){
 		ma.setSpeed(400);
 		mb.setSpeed(400);
@@ -52,6 +57,7 @@ public class go2 {
 		mb.forward();
 		mc.backward();
 	}
+	// move backward
 	public void moveBackward(){
 		ma.setSpeed(400);
 		mb.setSpeed(400);
@@ -60,11 +66,13 @@ public class go2 {
 		mb.backward();
 		mc.forward();
 	}
+	// stop
 	public void stawp(){
 		ma.setSpeed(0);
 		mb.setSpeed(0);
 		mc.setSpeed(0);
 	}
+	// shut down
 	public void shut(){
 		ma.close();
 		mb.close();

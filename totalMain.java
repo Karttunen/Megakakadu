@@ -11,6 +11,7 @@ public class totalMain {
 		// rnn for movement
 		// commands are: moveForward(), moveBackward(), turnLeft(), steerLeft(),
 		// turnRight(), steerRight(), stawp(), shut()
+		// explanations for each command are in go2.java
 		go2 rnn = new go2();
 		
 		// slap for slapping and slap counting
