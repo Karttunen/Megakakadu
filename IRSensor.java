@@ -1,12 +1,13 @@
+
 import lejos.hardware.sensor.EV3IRSensor;
 import lejos.robotics.SampleProvider;
 
-public class IRSensor {
+public class IRSensor extends Thread {
 	
 	
-	// this thing is BORK'D atm
-	// it doesn't work
-	// It just prints 0.0 as of now
+	// kinda works, but doesn't print out continuously.
+	// probably because of the Button.waitForAnyPress(); in totalMain
+	// we're not gonna have that in the final release, so it's probably not a problem.
 	
 	
 	private EV3IRSensor infraredSensor;

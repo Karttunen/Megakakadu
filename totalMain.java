@@ -16,21 +16,25 @@ public class totalMain {
 		// slap for slapping and slap counting
 		slapMotor slap = new slapMotor();
 		
-		// sensor for looking (doesn't work at the moment)
+		// sensor for looking
 		EV3IRSensor irSensor = new EV3IRSensor(SensorPort.S1);
 		IRSensor telem = new IRSensor(irSensor);
+		telem.start();
 		
 		// press ESCAPE on the EV3 to quit
 		while (!Button.ESCAPE.isDown()) {
 			
 			LCD.clear();
 			
-			// TRIES to print the distance, but is currently only showing 0.0
-			LCD.drawString("" + telem.GetDistance(), 0, 0);
+			// prints distance, but doesn't refresh without input ATM
+			LCD.drawString("Distance: " + telem.GetDistance(), 0, 0);
 			
 			LCD.drawString("WHAT SHALL I", 0, 2);
 			LCD.drawString("DESTROY THIS TIME?", 0, 3);
 			Delay.msDelay(50);
+			
+			//This is currently interfering with telem.GetDistance()
+			//we're not gonna use waitForAnyPress() in the final release, tho
 			int keycode = Button.waitForAnyPress();
 			
 			if (keycode == 1) {
