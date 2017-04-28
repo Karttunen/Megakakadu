@@ -3,13 +3,7 @@ import lejos.hardware.sensor.EV3IRSensor;
 import lejos.robotics.SampleProvider;
 
 public class IRSensor extends Thread {
-	
-	
-	// kinda works, but doesn't print out continuously.
-	// probably because of the Button.waitForAnyPress(); in totalMain
-	// we're not gonna have that in the final release, so it's probably not a problem.
-	
-	
+
 	private EV3IRSensor infraredSensor;
 	float distance;
 	boolean stopSampling = false;

@@ -16,7 +16,7 @@ public class totalMain {
 		// slap for slapping and slap counting
 		slapMotor slap = new slapMotor();
 		
-		// sensor for looking
+		// telem (short for telemetry), to check distance
 		EV3IRSensor irSensor = new EV3IRSensor(SensorPort.S1);
 		IRSensor telem = new IRSensor(irSensor);
 		telem.start();
@@ -25,38 +25,26 @@ public class totalMain {
 		while (!Button.ESCAPE.isDown()) {
 			
 			LCD.clear();
-			
-			// prints distance, but doesn't refresh without input ATM
 			LCD.drawString("Distance: " + telem.GetDistance(), 0, 0);
-			
 			LCD.drawString("WHAT SHALL I", 0, 2);
 			LCD.drawString("DESTROY THIS TIME?", 0, 3);
+			LCD.drawString("slap count: " + slap.getSlapCount(), 1, 5);
 			Delay.msDelay(50);
 			
-			//This is currently interfering with telem.GetDistance()
-			//we're not gonna use waitForAnyPress() in the final release, tho
-			int keycode = Button.waitForAnyPress();
-			
-			if (keycode == 1) {
-				//rnn.moveForward();
+			// Search for a target
+			if (telem.GetDistance() > 49.0f){
+				rnn.turnRight();
+			}
+			// approach the target
+			if (telem.GetDistance() > 8.0f && telem.GetDistance() < 49.0f) {
+				rnn.moveForward();
+			}
+			// destroy the target
+			if (telem.GetDistance() < 8.0f){
+				rnn.stawp();
 				slap.Slap();
 			}
-			if (keycode == 2){
-				//rnn.stawp();
-				LCD.clear();
-				LCD.drawString("TOTAL SLAPS SINCE", 0, 2);
-				LCD.drawString("ACTIVATION: " + slap.getSlapCount(), 0, 3);
-				Delay.msDelay(2000);
-			}
-			if (keycode == 4) {
-				//rnn.moveBackward();
-			}
-			if (keycode == 8) {
-				//slap.Slap();
-			}
-			if (keycode == 16) {
-				//rnn.turnLeft();
-			}
+
 		}
 		rnn.shut();
 		slap.shutSlap();
