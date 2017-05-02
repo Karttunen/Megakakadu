@@ -17,6 +17,10 @@ public class totalMain {
 		// slap for slapping and slap counting
 		slapMotor slap = new slapMotor();
 		
+		// a die to randomly turn
+		DieRoll die = new DieRoll();
+		die.Roll();
+		
 		// telem (short for telemetry), to check distance
 		EV3IRSensor irSensor = new EV3IRSensor(SensorPort.S1);
 		IRSensor telem = new IRSensor(irSensor);
@@ -25,16 +29,23 @@ public class totalMain {
 		// press ESCAPE on the EV3 to quit
 		while (!Button.ESCAPE.isDown()) {
 			
+			
 			LCD.clear();
 			LCD.drawString("Distance: " + telem.GetDistance(), 0, 0);
 			LCD.drawString("WHAT SHALL I", 0, 2);
 			LCD.drawString("DESTROY THIS TIME?", 0, 3);
 			LCD.drawString("slap count: " + slap.getSlapCount(), 1, 5);
+			LCD.drawString("die: " + die.getRoll(), 1, 6);
 			Delay.msDelay(50);
 			
 			// Search for a target
 			if (telem.GetDistance() > 49.0f){
-				rnn.turnRight();
+				if (die.getRoll() == 1) {
+					rnn.turnRight();
+				}
+				if (die.getRoll() == 2) {
+					rnn.turnLeft();
+				}
 			}
 			// approach the target
 			if (telem.GetDistance() > 8.0f && telem.GetDistance() < 49.0f) {
@@ -44,9 +55,12 @@ public class totalMain {
 			if (telem.GetDistance() < 8.0f){
 				rnn.stawp();
 				slap.Slap();
+				rnn.moveBackward();
+				die.Roll();
+				Delay.msDelay(1500);
 			}
-
 		}
+		// shut everything down
 		rnn.shut();
 		slap.shutSlap();
 		telem.stopSampling();

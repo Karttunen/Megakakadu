@@ -19,9 +19,7 @@ public class slapMotor {
 		
 		// taunt
 		LCD.clear();
-		LCD.drawString("YOUR WORLD IS", 0, 2);
-		LCD.drawString("DOOMED!", 0, 3);
-		LCD.drawString("DIE, DIE, DIE!", 0, 4);
+		LCD.drawString("DIE, DIE, DIE!", 0, 2);
 		
 		slapCount++;
 		
