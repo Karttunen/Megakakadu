@@ -15,6 +15,7 @@ public class totalMain {
 		go2 rnn = new go2();
 		
 		// slap for slapping and slap counting
+		// define how many slaps with slap.Slap(int)
 		slapMotor slap = new slapMotor();
 		
 		// a die to randomly turn
@@ -52,9 +53,10 @@ public class totalMain {
 				rnn.moveForward();
 			}
 			// destroy the target
+			// slap.Slap(int)
 			if (telem.GetDistance() < 8.0f){
 				rnn.stawp();
-				slap.Slap();
+				slap.Slap(2);
 				rnn.moveBackward();
 				die.Roll();
 				Delay.msDelay(1500);

@@ -8,13 +8,10 @@ public class go2 {
 	RegulatedMotor mb = new EV3MediumRegulatedMotor(MotorPort.B);
 	RegulatedMotor mc = new EV3MediumRegulatedMotor(MotorPort.C);
 	
-	public static go2 start(){
-		return new go2();
-	}
 	
 	// turn left, while front wheel's speed is 0
 	public void turnLeft(){
-		ma.setSpeed(400);
+		ma.setSpeed(600);
 		mb.setSpeed(0);
 		mc.setSpeed(400);
 		ma.forward();
@@ -34,7 +31,7 @@ public class go2 {
 	public void turnRight(){
 		ma.setSpeed(400);
 		mb.setSpeed(0);
-		mc.setSpeed(400);
+		mc.setSpeed(600);
 		ma.backward();
 		mb.forward();
 		mc.forward();

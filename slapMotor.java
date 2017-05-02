@@ -10,31 +10,32 @@ public class slapMotor {
 	
 	int slapCount;
 	
-	public static slapMotor start(){
-		return new slapMotor();
-	}
+
 	
 	// destroys EVERYTHING
-	public void Slap(){
+	public void Slap(int num){
 		
-		// taunt
-		LCD.clear();
-		LCD.drawString("DIE, DIE, DIE!", 0, 2);
-		
-		slapCount++;
-		
-		// slap motion
-		ms.setSpeed(900);
-		ms.rotate(-180);
-		ms.setSpeed(0);
-		Delay.msDelay(800);
-		
-		// takes the hand back to the original position
-		ms.setSpeed(200);
-		ms.rotate(180);
-		ms.setSpeed(0);
-		Delay.msDelay(300);
-		LCD.clear();
+		while (num >= 1) {
+			// taunt
+			LCD.clear();
+			LCD.drawString("DIE, DIE, DIE!", 0, 2);
+			
+			slapCount++;
+			num -= 1;
+			
+			// slap motion
+			ms.setSpeed(900);
+			ms.rotate(-180);
+			ms.setSpeed(0);
+			Delay.msDelay(800);
+			
+			// takes the hand back to the original position
+			ms.setSpeed(200);
+			ms.rotate(180);
+			ms.setSpeed(0);
+			Delay.msDelay(300);
+			LCD.clear();
+		}
 	}
 	
 	// shuts down the slap motor
