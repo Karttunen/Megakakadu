@@ -22,6 +22,9 @@ public class totalMain {
 		DieRoll die = new DieRoll();
 		die.Roll();
 		
+		//leds
+		LEDS leds = new LEDS();
+		
 		// telem (short for telemetry), to check distance
 		EV3IRSensor irSensor = new EV3IRSensor(SensorPort.S1);
 		IRSensor telem = new IRSensor(irSensor);
@@ -43,26 +46,33 @@ public class totalMain {
 			if (telem.GetDistance() > 49.0f){
 				if (die.getRoll() == 1) {
 					rnn.turnRight();
+					leds.searchlight();
 				}
 				if (die.getRoll() == 2) {
 					rnn.turnLeft();
+					leds.searchlight();
 				}
 			}
 			// approach the target
 			if (telem.GetDistance() > 8.0f && telem.GetDistance() < 49.0f) {
 				rnn.moveForward();
+				leds.approach();
 			}
 			// destroy the target
 			// slap.Slap(int)
 			if (telem.GetDistance() < 8.0f){
 				rnn.stawp();
+				
 				slap.Slap(2);
+				
+				leds.slap();
 				rnn.moveBackward();
 				die.Roll();
 				Delay.msDelay(1500);
 			}
 		}
 		// shut everything down
+		leds.shutDown();
 		rnn.shut();
 		slap.shutSlap();
 		telem.stopSampling();
