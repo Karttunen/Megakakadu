@@ -4,6 +4,10 @@ import lejos.hardware.lcd.LCD;
 import lejos.hardware.port.SensorPort;
 import lejos.hardware.sensor.EV3IRSensor;
 import lejos.utility.Delay;
+/**
+*Ohjelman main classi jossa kaikki oliot otetaan käyttöön ja ohjelma saadaan toimimaan
+*Luonut Kakadu
+*/
 
 public class totalMain {
 	public static void main(String[] args) {
