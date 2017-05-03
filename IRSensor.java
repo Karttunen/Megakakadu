@@ -1,6 +1,9 @@
 
 import lejos.hardware.sensor.EV3IRSensor;
 import lejos.robotics.SampleProvider;
+/** Tämä olio määrittelee kuinka IR sensoria käytettän
+* Luonut Oskari Karttunen
+*/
 
 public class IRSensor extends Thread {
 
