@@ -38,6 +38,35 @@ public class slapMotor {
 		}
 	}
 	
+	// Highly specific kind of slap
+	public void SpecificSlap(int deg){
+			LCD.clear();
+			LCD.drawString("DIE, DIE, DIE!", 0, 2);
+			
+			slapCount++;
+			
+			ms.setSpeed(900);
+			ms.rotate(-180);
+			ms.setSpeed(0);
+			Delay.msDelay(200);
+
+			ms.setSpeed(900);
+			ms.rotate(deg);
+			ms.setSpeed(0);
+			Delay.msDelay(200);
+			LCD.clear();
+			ms.setSpeed(900);
+			ms.rotate(-deg);
+			ms.setSpeed(0);
+			Delay.msDelay(200);
+			LCD.clear();
+			
+			ms.setSpeed(300);
+			ms.rotate(180);
+			ms.setSpeed(0);
+			Delay.msDelay(800);
+	}
+	
 	// shuts down the slap motor
 	public void shutSlap(){
 		ms.close();
