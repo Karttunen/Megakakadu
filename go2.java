@@ -2,6 +2,11 @@ import lejos.hardware.motor.EV3MediumRegulatedMotor;
 import lejos.hardware.port.MotorPort;
 import lejos.robotics.RegulatedMotor;
 
+/**
+*Tämä olio määrittelee kuinka moottoreita käytetään robotin liikuttamiseen
+*Luonut Oskari Karttunen
+*/
+
 public class go2 {
 	
 	RegulatedMotor ma = new EV3MediumRegulatedMotor(MotorPort.A);
