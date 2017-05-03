@@ -1,10 +1,13 @@
 import lejos.hardware.Button;
 
-//Luokka joka m‰‰rittelee ledien toiminnan
+/**
+*T√§m√§ luokka m√§√§rittelee ledien toiminnan
+*Luonut Markus Vikholm
+*/
 public class LEDS {
 	
 
-	// Ledien toimina etsinn‰n aikana
+	// Ledien toimina etsinn√§n aikana
 	public void searchlight(){
 	Button.LEDPattern(6);
 	
@@ -19,7 +22,7 @@ public class LEDS {
 	Button.LEDPattern(7);
 	}
 	
-	//Ledien toiminta kun robotti l‰im‰isee
+	//Ledien toiminta kun robotti l√§im√§isee
 	public void slap(){
 	Button.LEDPattern(9);
 	}
