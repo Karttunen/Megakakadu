@@ -3,6 +3,10 @@ import lejos.hardware.motor.EV3MediumRegulatedMotor;
 import lejos.hardware.port.MotorPort;
 import lejos.robotics.RegulatedMotor;
 import lejos.utility.Delay;
+/**
+*Tämä olio määrittelee kuinka moottoria käytetään robotin läpsimistoimintoon
+*Luonut Oskari Karttunen
+*/
 
 public class slapMotor {
 	
