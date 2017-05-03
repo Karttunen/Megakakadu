@@ -1,5 +1,8 @@
 import java.util.concurrent.ThreadLocalRandom;
-
+/**
+*Tämä olio randomisoi joka mahdollistaa robotin kääntymisen eri suuntiin sattumanvaraisesti
+*Luonut Oskari Karttunen
+*/
 
 public class DieRoll {
 	
