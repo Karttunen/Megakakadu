@@ -1,8 +1,15 @@
 import java.util.concurrent.ThreadLocalRandom;
+
 /**
-*Tämä olio randomisoi joka mahdollistaa robotin kääntymisen eri suuntiin sattumanvaraisesti
-*Luonut Oskari Karttunen
-*/
+ * @version 0.1
+ * @author Veli Oskari Karttunen
+ * 
+ * THIS is the most important part of the SlapMachine.
+ * Without it, it wouldn't be able to... uhhh...
+ * ... turn randomly...
+ * That's barely even useful.
+ *
+ */
 
 public class DieRoll {
 	

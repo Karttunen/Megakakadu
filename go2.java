@@ -3,9 +3,13 @@ import lejos.hardware.port.MotorPort;
 import lejos.robotics.RegulatedMotor;
 
 /**
-*Tämä olio määrittelee kuinka moottoreita käytetään robotin liikuttamiseen
-*Luonut Oskari Karttunen
-*/
+ * @version 0.1
+ * @author Veli Oskari Karttunen
+ *
+ *THIS is the most important part of the SlapMachine.
+ *Without the the motors, the SlapMachine couldn't get to the slappables.
+ *
+ */
 
 public class go2 {
 	
@@ -14,7 +18,8 @@ public class go2 {
 	RegulatedMotor mc = new EV3MediumRegulatedMotor(MotorPort.C);
 	
 	
-	// turn left, while front wheel's speed is 0
+	/** turn left, while front wheel's speed is 0
+	 */
 	public void turnLeft(){
 		ma.setSpeed(600);
 		mb.setSpeed(0);
@@ -23,7 +28,8 @@ public class go2 {
 		mb.backward();
 		mc.backward();
 	}
-	// turn left, while front wheel continues to move forward
+	/** turn left, while front wheel continues to move forward
+	 */
 	public void steerLeft(){
 		ma.setSpeed(400);
 		mb.setSpeed(200);
@@ -32,7 +38,8 @@ public class go2 {
 		mb.backward();
 		mc.backward();
 	}
-	// turn right, while front wheel's speed is 0
+	/** turn right, while front wheel's speed is 0
+	 */
 	public void turnRight(){
 		ma.setSpeed(400);
 		mb.setSpeed(0);
@@ -41,7 +48,8 @@ public class go2 {
 		mb.forward();
 		mc.forward();
 	}
-	// turn right, while front wheel continues to move forward
+	/** turn right, while front wheel continues to move forward
+	 */
 	public void steerRight(){
 		ma.setSpeed(400);
 		mb.setSpeed(200);
@@ -50,7 +58,8 @@ public class go2 {
 		mb.forward();
 		mc.forward();
 	}
-	// move forward
+	/** CHAAAAARRGEEEEEEEEE
+	 */
 	public void moveForward(){
 		ma.setSpeed(400);
 		mb.setSpeed(400);
@@ -59,7 +68,8 @@ public class go2 {
 		mb.forward();
 		mc.backward();
 	}
-	// move backward
+	/** move backward
+	 */
 	public void moveBackward(){
 		ma.setSpeed(400);
 		mb.setSpeed(400);
@@ -68,13 +78,15 @@ public class go2 {
 		mb.backward();
 		mc.forward();
 	}
-	// stop
+	/** stop
+	 */
 	public void stawp(){
 		ma.setSpeed(0);
 		mb.setSpeed(0);
 		mc.setSpeed(0);
 	}
-	// shut down
+	/** shut down
+	 */
 	public void shut(){
 		ma.close();
 		mb.close();

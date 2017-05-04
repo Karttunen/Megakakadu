@@ -4,38 +4,53 @@ import lejos.hardware.lcd.LCD;
 import lejos.hardware.port.SensorPort;
 import lejos.hardware.sensor.EV3IRSensor;
 import lejos.utility.Delay;
+
 /**
-*Ohjelman main classi jossa kaikki oliot otetaan käyttöön ja ohjelma saadaan toimimaan
-*Luonut Kakadu
-*/
+ * 
+ * @version 0.1
+ * @author Kakadu
+ *
+ * Welcome to totalMain
+ * This is the main.
+ * I case you haven't guessed.
+ *
+ */
 
 public class totalMain {
 	public static void main(String[] args) {
 		
+		
+		
 		/** rnn for movement
-		commands are: moveForward(), moveBackward(), turnLeft(), steerLeft(),
-		turnRight(), steerRight(), stawp(), shut()
-		explanations for each command are in go2.java
+		*commands are: moveForward(), moveBackward(), turnLeft(), steerLeft(),
+		*turnRight(), steerRight(), stawp(), shut()
+		*explanations for each command are in go2.java
 		*/
 		go2 rnn = new go2();
 		
-		// slap for slapping and slap counting
-		// define how many slaps with slap.Slap(int)
+		/** slap for slapping and slap counting
+		* define how many slaps with slap.Slap(int)
+		*/
 		slapMotor slap = new slapMotor();
 		
-		// a die to randomly turn
+		/** The die determines a random number (1 or 2) and then uses it to pick a random direction, from which
+		 * it seeks its' next target.
+		 */
 		DieRoll die = new DieRoll();
 		die.Roll();
 		
-		//leds
+		/** LEDs. They're LEDs.
+		 */
 		LEDS leds = new LEDS();
 		
-		// telem (short for telemetry), to check distance
+		/**telem (Short for telemetry. Probably wrong use of the word in this case, but whatever), to check distance
+		 */
 		EV3IRSensor irSensor = new EV3IRSensor(SensorPort.S1);
 		IRSensor telem = new IRSensor(irSensor);
 		telem.start();
 		
-		// press ESCAPE on the EV3 to quit
+		/**press ESCAPE on the EV3 to quit
+		 */
 		while (!Button.ESCAPE.isDown()) {
 			
 			
@@ -47,7 +62,8 @@ public class totalMain {
 			LCD.drawString("die: " + die.getRoll(), 1, 6);
 			Delay.msDelay(50);
 			
-			// Search for a target
+			/**Search for a target
+			 */
 			if (telem.GetDistance() > 49.0f){
 				if (die.getRoll() == 1) {
 					rnn.turnRight();
@@ -58,13 +74,15 @@ public class totalMain {
 					leds.searchlight();
 				}
 			}
-			// approach the target
+			/** approach the target
+			 */
 			if (telem.GetDistance() > 8.0f && telem.GetDistance() < 49.0f) {
 				rnn.moveForward();
 				leds.approach();
 			}
-			// destroy the target
-			// slap.Slap(int)
+			/** destroy the target
+			* slap.Slap(int)
+			*/
 			if (telem.GetDistance() < 8.0f){
 				rnn.stawp();
 				
@@ -77,7 +95,8 @@ public class totalMain {
 				Delay.msDelay(1500);
 			}
 		}
-		// shut everything down
+		/** shut everything down
+		 */
 		leds.shutDown();
 		rnn.shut();
 		slap.shutSlap();

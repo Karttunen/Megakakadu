@@ -3,10 +3,15 @@ import lejos.hardware.motor.EV3MediumRegulatedMotor;
 import lejos.hardware.port.MotorPort;
 import lejos.robotics.RegulatedMotor;
 import lejos.utility.Delay;
+
 /**
-*Tämä olio määrittelee kuinka moottoria käytetään robotin läpsimistoimintoon
-*Luonut Oskari Karttunen
-*/
+ * @version 0.1
+ * @author Veli Oskari Karttunen
+ *
+ *THIS is the most important part of the SlapMachine.
+ *Without the slapMotor, there would be no slapping.
+ *
+ */
 
 public class slapMotor {
 	
@@ -16,7 +21,15 @@ public class slapMotor {
 	
 
 	
-	// destroys EVERYTHING
+	/** destroys EVERYTHING
+	 * 
+	 * @param num
+	 * 
+	 * THIS is where the magic happens.
+	 * The motor rotates 180 degrees, and then it rotates back.
+	 * the constructor "num" determines how many slaps you'd like.
+	 * It also increases the slapCount.
+	 */
 	public void Slap(int num){
 		
 		while (num >= 1) {
@@ -42,7 +55,16 @@ public class slapMotor {
 		}
 	}
 	
-	// Highly specific kind of slap
+	/** Highly specific kind of slap
+	 * 
+	 * @param deg
+	 * 
+	 * For whatever reason that I cannot discern, I was asked to create a very specific kind of slap.
+	 * This one first rotates 180 degrees, then it moves back whatever amount of degrees you determine to
+	 * move back, then it rotates FORWARD again (by the detemined amount of degrees) and then it finally returns
+	 * to its' original position.
+	 * Why? I couldn't even begin to guess.
+	 */
 	public void SpecificSlap(int deg){
 			LCD.clear();
 			LCD.drawString("DIE, DIE, DIE!", 0, 2);
@@ -71,12 +93,15 @@ public class slapMotor {
 			Delay.msDelay(800);
 	}
 	
-	// shuts down the slap motor
+	/** shuts down the slap motor
+	 */
 	public void shutSlap(){
 		ms.close();
 	}
 	
-	// returns the number of slaps since activation
+	/** returns the number of slaps since activation
+	 * @return slapCount
+	 */
 	public int getSlapCount(){
 		return this.slapCount;
 	}

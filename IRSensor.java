@@ -1,9 +1,15 @@
 
 import lejos.hardware.sensor.EV3IRSensor;
 import lejos.robotics.SampleProvider;
-/** Tämä olio määrittelee kuinka IR sensoria käytettän
-* Luonut Oskari Karttunen
-*/
+
+/**
+ * @version 0.1
+ * @author Veli Oskari Karttuen
+ * 
+ * THIS is the most important part of the SlapMachine.
+ * Without it, the SlapMachine would be BLIND!
+ *
+ */
 
 public class IRSensor extends Thread {
 
@@ -15,17 +21,21 @@ public class IRSensor extends Thread {
 		this.infraredSensor = sensor;
 	}
 	
-	// return readings
+	/** return readings
+	 * @return distance
+	 */
 	public float GetDistance () {
 		return this.distance;
 	}
 	
-	// shuts down the IRSensor
+	/** shuts down the IRSensor
+	 */
 	public void stopSampling(){
 		stopSampling = true;
 	}
 	
-	// take readings
+	/** take readings
+	 */
 	public void run() {
 		while (!stopSampling) {
 			SampleProvider dist = infraredSensor.getDistanceMode();
