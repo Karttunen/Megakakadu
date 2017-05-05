@@ -43,11 +43,15 @@ public class totalMain {
 		 */
 		LEDS leds = new LEDS();
 		
+		Noise rawr = new Noise();
+		
 		/**telem (Short for telemetry. Probably wrong use of the word in this case, but whatever), to check distance
 		 */
 		EV3IRSensor irSensor = new EV3IRSensor(SensorPort.S1);
 		IRSensor telem = new IRSensor(irSensor);
 		telem.start();
+		
+		rawr.Mutise();
 		
 		/**press ESCAPE on the EV3 to quit
 		 */
@@ -77,14 +81,17 @@ public class totalMain {
 			/** approach the target
 			 */
 			if (telem.GetDistance() > 8.0f && telem.GetDistance() < 49.0f) {
+				rawr.Mutise();
 				rnn.moveForward();
 				leds.approach();
+				
 			}
 			/** destroy the target
 			* slap.Slap(int)
 			*/
 			if (telem.GetDistance() < 8.0f){
 				rnn.stawp();
+				rawr.Mutise();
 				
 				//slap.Slap(2);
 				slap.SpecificSlap(80);

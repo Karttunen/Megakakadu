@@ -1,15 +1,17 @@
 import lejos.hardware.Button;
 
 /**
-*  Tämä luokka määrittelee ledien toiminnan
-* @version 3.13252356565656	
-* @author Markus Vikholm
-*/
+ * @version 0.1
+ * @author Markus Vikholm
+ * 
+ * Pwetty lights.
+ *
+ */
 public class LEDS {
 	
 
-	/** Ledien toimina etsinnän aikana
-	*/
+	/** Ledien toimina etsinn�n aikana
+	 */
 	public void searchlight(){
 	Button.LEDPattern(6);
 	
@@ -17,22 +19,22 @@ public class LEDS {
 	
 	}
 	
-	/** Ledien toiminta kun robotti saavuttaa kohdetta
-	*/
+	/**Ledien toiminta kun robotti saavuttaa kohdetta
+	 */
 	public void approach(){
 	Button.LEDPattern(9);
 	
 	Button.LEDPattern(7);
 	}
 	
-	/** Ledien toiminta kun robotti läimäisee
-	*/
+	/**Ledien toiminta kun robotti l�im�isee
+	 */
 	public void slap(){
 	Button.LEDPattern(9);
 	}
 	
-	/** Ledien toiminta shutdownin aikana
-	*/
+	/**Ledien toiminta shutdownin aikana
+	 */
 	public void shutDown(){
 	Button.LEDPattern(3);
 	Button.LEDPattern(2);
