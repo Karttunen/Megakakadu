@@ -4,10 +4,10 @@ import java.util.concurrent.ThreadLocalRandom;
  * @version 0.1
  * @author Veli Oskari Karttunen
  * 
- * THIS is the most important part of the SlapMachine.
- * Without it, it wouldn't be able to... uhhh...
- * ... turn randomly...
- * That's barely even useful.
+ * Tämä on kaikkein tärkein osa SlapMAchinea.
+ * Ilman tätä, laite ei pystyisi... ööö...
+ * ... kääntymään satunnaiseen suuntaan...
+ * Se ei kuulosta erityisen hyödylliseltä.
  *
  */
 

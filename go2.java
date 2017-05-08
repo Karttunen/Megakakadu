@@ -6,8 +6,8 @@ import lejos.robotics.RegulatedMotor;
  * @version 0.1
  * @author Veli Oskari Karttunen
  *
- *THIS is the most important part of the SlapMachine.
- *Without the the motors, the SlapMachine couldn't get to the slappables.
+ *T‰m‰ on kaikkein t‰rkein osa SlapMAchinea.
+ *Ilman moottoreita, SlapMachine ei p‰‰sisi l‰psitt‰vien luokse.
  *
  */
 
@@ -18,7 +18,7 @@ public class go2 {
 	RegulatedMotor mc = new EV3MediumRegulatedMotor(MotorPort.C);
 	
 	
-	/** turn left, while front wheel's speed is 0
+	/** K‰‰nny vasempaan
 	 */
 	public void turnLeft(){
 		ma.setSpeed(600);
@@ -28,7 +28,7 @@ public class go2 {
 		mb.backward();
 		mc.backward();
 	}
-	/** turn left, while front wheel continues to move forward
+	/** K‰‰nny vasempaan, samaan aikaan kuin liikut
 	 */
 	public void steerLeft(){
 		ma.setSpeed(400);
@@ -38,7 +38,7 @@ public class go2 {
 		mb.backward();
 		mc.backward();
 	}
-	/** turn right, while front wheel's speed is 0
+	/** K‰‰nny oikealle
 	 */
 	public void turnRight(){
 		ma.setSpeed(400);
@@ -48,7 +48,7 @@ public class go2 {
 		mb.forward();
 		mc.forward();
 	}
-	/** turn right, while front wheel continues to move forward
+	/** K‰‰nny oikealle, samaan aikaan kuin liikut
 	 */
 	public void steerRight(){
 		ma.setSpeed(400);
@@ -58,7 +58,7 @@ public class go2 {
 		mb.forward();
 		mc.forward();
 	}
-	/** CHAAAAARRGEEEEEEEEE
+	/** Mene suoraan eteenp‰in
 	 */
 	public void moveForward(){
 		ma.setSpeed(400);
@@ -68,7 +68,7 @@ public class go2 {
 		mb.forward();
 		mc.backward();
 	}
-	/** move backward
+	/** Per‰‰nny
 	 */
 	public void moveBackward(){
 		ma.setSpeed(400);
@@ -78,14 +78,14 @@ public class go2 {
 		mb.backward();
 		mc.forward();
 	}
-	/** stop
+	/** Pys‰hdy
 	 */
 	public void stawp(){
 		ma.setSpeed(0);
 		mb.setSpeed(0);
 		mc.setSpeed(0);
 	}
-	/** shut down
+	/** Sulje moottori
 	 */
 	public void shut(){
 		ma.close();

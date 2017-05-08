@@ -6,8 +6,8 @@ import lejos.robotics.SampleProvider;
  * @version 0.1
  * @author Veli Oskari Karttuen
  * 
- * THIS is the most important part of the SlapMachine.
- * Without it, the SlapMachine would be BLIND!
+ * Tämä on kaikkein tärkein osa SlapMAchinea.
+ * Ilman tätä, SlapMachine olisi sokea.
  *
  */
 
@@ -21,20 +21,20 @@ public class IRSensor extends Thread {
 		this.infraredSensor = sensor;
 	}
 	
-	/** return readings
+	/** palauttaa etäisyyslukeman
 	 * @return distance
 	 */
 	public float GetDistance () {
 		return this.distance;
 	}
 	
-	/** shuts down the IRSensor
+	/** Sulkee IRSensorin
 	 */
 	public void stopSampling(){
 		stopSampling = true;
 	}
 	
-	/** take readings
+	/** Ota lukemia
 	 */
 	public void run() {
 		while (!stopSampling) {
