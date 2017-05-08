@@ -5,29 +5,21 @@ import lejos.robotics.RegulatedMotor;
 import lejos.utility.Delay;
 
 /**
+ * L√§psimismoottorin luokka
+ * Suorittaa l√§psimisen.
  * @version 0.1
  * @author Veli Oskari Karttunen
- *
- *T‰m‰ on kaikkein t‰rkein osa SlapMAchinea
- *Ilman SlapMotoria, l‰psiminen ei tapahtuisi
- *
  */
-
 public class slapMotor {
 	
 	RegulatedMotor ms = new EV3MediumRegulatedMotor(MotorPort.D);
 	
 	int slapCount;
 	
-
-	
-	/** tuhoaa KAIKEN
-	 * 
-	 * @param num
-	 * 
-	 * Moottori pyˆr‰ht‰‰ 180 astetta ja sitten pyˆrii takaisin.
-	 * Construktori "num" m‰‰ritt‰‰ kuinka monta kertaa l‰psit‰‰n.
-	 * T‰m‰ myˆs nostaa slapCounttia
+	/** 
+	 * Moottori py√∂r√§ht√§√§ 180 astetta ja palaa sitten takaisin
+	 * Lis√§√§ slapCounttia yhdell√§
+	 * @param num M√§√§ritt√§√§ kuinka monta kertaa l√§psit√§√§n
 	 */
 	public void Slap(int num){
 		
@@ -54,14 +46,12 @@ public class slapMotor {
 		}
 	}
 	
-	/** Hyvin tietyntapainen l‰pp‰isy
-	 * 
+	/** 
+	 * L√§ps√§isysarja
+	 * Py√∂r√§ytt√§√§ k√§tt√§ 180 ja palaa takaisin. 
+	 * Sitten deg-arvon verran eteenp√§in. 
+	 * Lopuksi palaa alkuasentoon.
 	 * @param deg
-	 * 
-	 * Minua pyydettiin tekem‰‰n t‰m‰. En tied‰ mit‰ varten.
-	 * This one first rotates 180 degrees, then it moves back whatever amount of degrees you determine to
-	 * Se ensin pyˆr‰ytt‰‰ k‰tt‰ 180, sitten vain hieman takaisin, sitten hieman eteen ja viimeinkin 180 astetta takaisin.
-	 * Miksi? Ehk‰ sen idea on antaa sille jotain eloa muistuttavaa liikett‰.
 	 */
 	public void SpecificSlap(int deg){
 			LCD.clear();
@@ -91,17 +81,18 @@ public class slapMotor {
 			Delay.msDelay(800);
 	}
 	
-	/** sulkee l‰psymoottorin
+	/** 
+	 * Sulkee l√§psymoottorin
 	 */
 	public void shutSlap(){
 		ms.close();
 	}
 	
-	/** palauttaa l‰psimism‰‰r‰n
-	 * @return slapCount
+	/** 
+	 * Palauttaa l√§psimism√§√§r√§n
+	 * @return slapCount L√§psittyjen kertojen m√§√§r√§
 	 */
 	public int getSlapCount(){
 		return this.slapCount;
-	}
-	
+	}	
 }
