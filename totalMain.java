@@ -3,6 +3,7 @@ import lejos.hardware.Button;
 import lejos.hardware.lcd.LCD;
 import lejos.hardware.port.SensorPort;
 import lejos.hardware.sensor.EV3IRSensor;
+import lejos.hardware.sensor.EV3TouchSensor;
 import lejos.utility.Delay;
 
 /**
@@ -18,10 +19,11 @@ import lejos.utility.Delay;
 
 public class totalMain {
 	public static void main(String[] args) {
-		
+		//EV3TouchSensor ts = new EV3TouchSensor(SensorPort.S2);
 
-		
-		//BumpSensor Bumble = new BumpSensor();
+		boolean stopReverse = false;
+		BumpSensor Bumble = new BumpSensor();
+		Bumble.start();
 		
 		// rnn liikkumiseen
 		//Komennot ovat: moveForward(), moveBackward(), turnLeft(), steerLeft(),
@@ -67,7 +69,6 @@ public class totalMain {
 			Delay.msDelay(50);
 			
 			//etsi kohdetta
-
 			if (telem.GetDistance() > 49.0f){
 				if (die.getRoll() == 1) {
 					rnn.turnRight();
@@ -93,15 +94,25 @@ public class totalMain {
 				
 				die.Roll();
 				slap.Slap(die.getRoll());
-				//slap.SpecificSlap(80);
 				
 				leds.slap();
 				
+				long start = System.currentTimeMillis();
+				long end = start + 4000;
+				stopReverse = false;
+				LCD.clear();
+				LCD.drawString(" " + Bumble.getSample(), 0, 0);
+				
+				while (System.currentTimeMillis() < end && stopReverse == false) {
+					rnn.moveBackward();
+					if (Bumble.getSample() == 1 || Button.ENTER.isDown()) {
+						rnn.moveForward();
+						Delay.msDelay(2000);
+						stopReverse = true;
+					}
+				}
 
-
-				rnn.reverseMenouver();
 				die.Roll();
-				//Delay.msDelay(1500);
 
 				
 			}
@@ -113,5 +124,6 @@ public class totalMain {
 		telem.stopSampling();
 		Delay.msDelay(500);
 		irSensor.close();
+		
 	}
 }
