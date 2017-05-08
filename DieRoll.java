@@ -1,24 +1,26 @@
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * @version 0.1
+ * Heittää nopan, jonka tulosta käytetään kääntymissuunnan valitsemiseen
+ * @version 1.0
  * @author Veli Oskari Karttunen
- * 
- * Tämä on kaikkein tärkein osa SlapMAchinea.
- * Ilman tätä, laite ei pystyisi... ööö...
- * ... kääntymään satunnaiseen suuntaan...
- * Se ei kuulosta erityisen hyödylliseltä.
- *
  */
-
 public class DieRoll {
 	
+	//Talletetaan arvottu tulos
 	private int rand;
 	
+	/**
+	 * Arpoo luvun yhdestä kolmeen ja asettaa sen luokan rand muuttujaan
+	 */
 	public void Roll(){
 		rand = ThreadLocalRandom.current().nextInt(1, 3);
 	}
 	
+	/**
+	 * Palauttaa arvotun luvun
+	 * @return Luokan rand-muuttujan arvo (integer)
+	 */
 	public int getRoll(){
 		return this.rand;
 	}
