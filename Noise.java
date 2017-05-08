@@ -13,8 +13,8 @@ public class Noise {
 	/**
 	 * Tuottaa satunnaisia ääniä 10 peräkkäin
 	 * Äänten taajuus vaihtelee 1..5 kHz
-	 * Kesto vaihtelee 30..100 msek
-	 * Volyymi on 100 %
+	 * Kesto vaihtelee 30..200 msek
+	 * Volyymi 100 %
 	 * 
 	 */
 	public void Mutise() {
@@ -26,9 +26,9 @@ public class Noise {
 		//int aVolume;	//voimakkuus
 		
 		for (int i=0; i<10;i++){
-			aFrequency = rand.nextInt(1000, 5000); 	//normaali äänialue on 1..4 kHz
-			aDuration = rand.nextInt(20, 200);		//millisekunteina
-			//aVolume = rand.nextInt(30, 100);	//prosentteina 100=>täysillä
+			aFrequency = 1000+rand.nextInt(5000); 	// normaali äänialue on 1..4 kHz
+			aDuration = 30+rand.nextInt(200);		// millisekunteina
+			//aVolume = rand.nextInt(30, 100);		// prosentteina 100 => täysillä
 			//Sound.playTone(aFrequency, aDuration, aVolume);
 			Sound.playTone(aFrequency, aDuration, 100);
 		}		
