@@ -1,12 +1,12 @@
 import java.util.Random;
 
 import lejos.hardware.Sound;
-//import lejos.utility.Delay;
 
-/** 
- * Ääntelee
+/**
+ * Tuottaa äänisarjan
  * @author Helena
- * */
+ *
+ */
 public class Noise {
 	
 	/**
