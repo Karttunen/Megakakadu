@@ -1,6 +1,7 @@
 import lejos.hardware.motor.EV3MediumRegulatedMotor;
 import lejos.hardware.port.MotorPort;
 import lejos.robotics.RegulatedMotor;
+import lejos.utility.Delay;
 
 /**
  * @version 0.1
@@ -11,11 +12,14 @@ import lejos.robotics.RegulatedMotor;
  *
  */
 
-public class go2 {
+public class go2 extends Thread {
 	
 	RegulatedMotor ma = new EV3MediumRegulatedMotor(MotorPort.A);
 	RegulatedMotor mb = new EV3MediumRegulatedMotor(MotorPort.B);
 	RegulatedMotor mc = new EV3MediumRegulatedMotor(MotorPort.C);
+	BumpSensor Bumble = new BumpSensor();
+	
+	boolean stopReverse = false;
 	
 	
 	/** K‰‰nny vasempaan
@@ -91,5 +95,22 @@ public class go2 {
 		ma.close();
 		mb.close();
 		mc.close();
+	}
+	
+	public void reverseMenouver(){
+		long start = System.currentTimeMillis();
+		long end = start + 4000;
+		stopReverse = false;
+		while (System.currentTimeMillis() < end && stopReverse == false) {
+			moveBackward();
+			if (Bumble.getSample() == 1) {
+				moveForward();
+				Delay.msDelay(4000);
+				stopRev();
+			}
+		}
+	}
+	public void stopRev(){
+		stopReverse = true;
 	}
 }

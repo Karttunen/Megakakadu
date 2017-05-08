@@ -19,7 +19,9 @@ import lejos.utility.Delay;
 public class totalMain {
 	public static void main(String[] args) {
 		
+
 		
+		//BumpSensor Bumble = new BumpSensor();
 		
 		// rnn liikkumiseen
 		//Komennot ovat: moveForward(), moveBackward(), turnLeft(), steerLeft(),
@@ -56,7 +58,6 @@ public class totalMain {
 
 		while (!Button.ESCAPE.isDown()) {
 			
-			
 			LCD.clear();
 			LCD.drawString("Distance: " + telem.GetDistance(), 0, 0);
 			LCD.drawString("WHAT SHALL I", 0, 2);
@@ -79,7 +80,7 @@ public class totalMain {
 			}
 			// lähesty kohdetta
 			if (telem.GetDistance() > 8.0f && telem.GetDistance() < 49.0f) {
-				rawr.Mutise();
+				//rawr.Mutise();
 				rnn.moveForward();
 				leds.approach();
 				
@@ -90,13 +91,19 @@ public class totalMain {
 				rnn.stawp();
 				rawr.Mutise();
 				
-				//slap.Slap(2);
-				slap.SpecificSlap(80);
+				die.Roll();
+				slap.Slap(die.getRoll());
+				//slap.SpecificSlap(80);
 				
 				leds.slap();
-				rnn.moveBackward();
+				
+
+
+				rnn.reverseMenouver();
 				die.Roll();
-				Delay.msDelay(1500);
+				//Delay.msDelay(1500);
+
+				
 			}
 		}
 		// sulkee kaiken

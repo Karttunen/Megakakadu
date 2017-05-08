@@ -1,7 +1,7 @@
 import java.util.Random;
 
 import lejos.hardware.Sound;
-import lejos.utility.Delay;
+//import lejos.utility.Delay;
 
 /** 
  * Ääntelee
@@ -21,15 +21,14 @@ public class Noise {
 		
 		int aFrequency;
 		int aDuration;
-		int aVolume;
+		//int aVolume;
 		
 		for (int i=0; i<10;i++){
 			aFrequency = rand.nextInt(5000); //normaali äänialue 1..4 kHz
 			aDuration = rand.nextInt(200);	//msek
-			aVolume = 30+rand.nextInt(70);	//prosentteina
+			//aVolume = 30+rand.nextInt(70);	//prosentteina
 			//Sound.playTone(aFrequency, aDuration, aVolume);
 			Sound.playTone(aFrequency, aDuration, 100);
 		}		
 	}
-
 }
