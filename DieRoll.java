@@ -1,16 +1,11 @@
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
+ * ... kÃ¤Ã¤ntymÃ¤Ã¤n satunnaiseen suuntaan...
+ * Se ei kuulosta erityisen hyÃ¶dylliseltÃ¤.
  * @version 0.1
  * @author Veli Oskari Karttunen
- * 
- * Tämä on kaikkein tärkein osa SlapMAchinea.
- * Ilman tätä, laite ei pystyisi... ööö...
- * ... kääntymään satunnaiseen suuntaan...
- * Se ei kuulosta erityisen hyödylliseltä.
- *
  */
-
 public class DieRoll {
 	
 	private int rand;
