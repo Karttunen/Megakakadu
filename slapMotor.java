@@ -5,46 +5,41 @@ import lejos.robotics.RegulatedMotor;
 import lejos.utility.Delay;
 
 /**
- * @version 0.1
- * @author Veli Oskari Karttunen
- *
- *Tämä on kaikkein tärkein osa SlapMAchinea
- *Ilman SlapMotoria, läpsiminen ei tapahtuisi
- *
+ * Läpsimismoottorin luokka
+ * @version 1.0
+ * @author Oskari
+ * 
  */
-
 public class slapMotor {
 	
-	RegulatedMotor ms = new EV3MediumRegulatedMotor(MotorPort.D);
+	RegulatedMotor ms = new EV3MediumRegulatedMotor(MotorPort.D);	//läpsymoottori
 	
-	int slapCount;
+	int slapCount;	//läpsylaskuri
 	
-
-	
-	/** tuhoaa KAIKEN
-	 * 
-	 * @param num
-	 * 
-	 * Moottori pyörähtää 180 astetta ja sitten pyörii takaisin.
-	 * Parametri "num" määrittää kuinka monta kertaa läpsitään.
-	 * Tämä myös nostaa slapCounttia
+	/** 
+	 * Perusläimäisy
+	 * Moottori pyörähtää 180 astetta ja palaa sitten takaisin
+	 * Lisä slapCounttia yhdellä
+	 * @param num Määrittää kuinka monta kertaa läpsitään (int)
 	 */
 	public void Slap(int num){
+		
 		while (num >= 1) {
-			// taunt
+			
+			// kommentoi näytölle
 			LCD.clear();
 			LCD.drawString("DIE, DIE, DIE!", 0, 2);
 			
-			slapCount++;
+			slapCount++;	//lisää laskurin arvoa
 			num -= 1;
 			
-			// slap motion
+			// läpsimiskäden liikuttaminen/rotaatio
 			ms.setSpeed(900);
 			ms.rotate(-180);
 			ms.setSpeed(0);
 			Delay.msDelay(800);
 			
-			// takes the hand back to the original position
+			// palauttaa käden alkuasentoon
 			ms.setSpeed(200);
 			ms.rotate(180);
 			ms.setSpeed(0);
@@ -53,54 +48,61 @@ public class slapMotor {
 		}
 	}
 	
-	/** Hyvin tietyntapainen läppäisy
-	 * 
-	 * @param deg
-	 * 
-	 * Minua pyydettiin tekemään tämä. En tiedä mitä varten.
-	 * This one first rotates 180 degrees, then it moves back whatever amount of degrees you determine to
-	 * Se ensin pyöräyttää kättä 180, sitten vain hieman takaisin, sitten hieman eteen ja viimeinkin 180 astetta takaisin.
-	 * Miksi? Ehkä sen idea on antaa sille jotain eloa muistuttavaa liikettä.
+	/** 
+	 * Muokattu läimäisysarja
+	 * Läpsäisysarja
+	 * Pyöräyttää kättä 180 ja palaa takaisin 
+	 * Sitten deg-arvon verran eteenpäin 
+	 * Lopuksi palaa alkuasentoon
+	 * @param deg Astemäärä, jolla kättä käännetään perusliikkeen lisäksi (int)
 	 */
 	public void SpecificSlap(int deg){
+		
+			//kommentti näytölle
 			LCD.clear();
 			LCD.drawString("DIE, DIE, DIE!", 0, 2);
 			
-			slapCount++;
+			slapCount++;	//laskurin arvon kasvatus
 			
+			//käden kääntö eteenpäin
 			ms.setSpeed(900);
 			ms.rotate(-180);
 			ms.setSpeed(0);
 			Delay.msDelay(200);
 
+			//käden kääntö eteenpäin deg-muuttujan verran
 			ms.setSpeed(900);
 			ms.rotate(deg);
 			ms.setSpeed(0);
 			Delay.msDelay(200);
 			LCD.clear();
+			
+			//käden palauttaminen taaksepäin deg-muuttujan verran
 			ms.setSpeed(900);
 			ms.rotate(-deg);
 			ms.setSpeed(0);
 			Delay.msDelay(200);
 			LCD.clear();
 			
+			//käden palauttaminen alkuasentoon
 			ms.setSpeed(300);
 			ms.rotate(180);
 			ms.setSpeed(0);
 			Delay.msDelay(800);
 	}
 	
-	/** sulkee läpsymoottorin
+	/** 
+	 * Sulkee läpsymoottorin
 	 */
 	public void shutSlap(){
 		ms.close();
 	}
 	
-	/** palauttaa läpsimismäärän
-	 * @return slapCount
+	/** 
+	 * Palauttaa läpsimismäärän
+	 * @return slapCount Läpsittyjen kertojen määrä (int)
 	 */
 	public int getSlapCount(){
 		return this.slapCount;
-	}
-	
+	}	
 }
