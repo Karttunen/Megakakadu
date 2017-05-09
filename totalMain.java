@@ -3,17 +3,15 @@ import lejos.hardware.Button;
 import lejos.hardware.lcd.LCD;
 import lejos.hardware.port.SensorPort;
 import lejos.hardware.sensor.EV3IRSensor;
-import lejos.hardware.sensor.EV3TouchSensor;
 import lejos.utility.Delay;
 
 /**
- * 
- * @version 0.1
- * @author Kakadu
- *
  * Tervetuloa totalMainiin.
  * Tämä on main.
  * Jos et jo arvannut.
+ * 
+ * @version 0.1
+ * @author Kakadu
  *
  */
 
@@ -105,7 +103,7 @@ public class totalMain {
 				
 				while (System.currentTimeMillis() < end && stopReverse == false) {
 					rnn.moveBackward();
-					if (Bumble.getSample() == 1 || Button.ENTER.isDown()) {
+					if (Bumble.getSample() == 1) {
 						rnn.moveForward();
 						Delay.msDelay(2000);
 						stopReverse = true;

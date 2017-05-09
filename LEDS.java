@@ -1,10 +1,10 @@
 import lejos.hardware.Button;
 
 /**
+ * 
+ * 
  * @version 0.1
  * @author Markus Vikholm
- * 
- * Pwetty lights.
  *
  */
 public class LEDS {

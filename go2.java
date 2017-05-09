@@ -1,15 +1,14 @@
-import lejos.hardware.lcd.LCD;
 import lejos.hardware.motor.EV3MediumRegulatedMotor;
 import lejos.hardware.port.MotorPort;
 import lejos.robotics.RegulatedMotor;
-import lejos.utility.Delay;
 
 /**
+ * 
+ * T‰m‰ on kaikkein t‰rkein osa SlapMAchinea.
+ * Ilman moottoreita, SlapMachine ei p‰‰sisi l‰psitt‰vien luokse.
+ * 
  * @version 0.1
  * @author Veli Oskari Karttunen
- *
- *T‰m‰ on kaikkein t‰rkein osa SlapMAchinea.
- *Ilman moottoreita, SlapMachine ei p‰‰sisi l‰psitt‰vien luokse.
  *
  */
 
