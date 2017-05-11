@@ -17,7 +17,7 @@ public class Noise {
 	 * Volyymi 100 %. 
 	 * 
 	 */
-	public void Mutise() {
+	public void mutise() {
 		
 		Random rand = new Random();	//luodaan satunnaisgeneraattori
 		
