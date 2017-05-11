@@ -2,44 +2,45 @@ import lejos.hardware.sensor.EV3IRSensor;
 import lejos.robotics.SampleProvider;
 
 /**
- * Infrapuna-anturia k√§ytet√§√§n et√§isyyden mittaamiseen
- * Avaa s√§ikeen
  * 
+ * Infrapunasensorin k‰sittely.
+ *
  * @version 1.0
- * @author Veli Oskari Karttuen
+ * @author Veli Oskari Karttunen
+ * 
  */
 public class IrSensor extends Thread {
 
-	private EV3IRSensor infraredSensor; 
-	float distance; 					//pit√§√§ et√§isyyden muistissa
-	boolean stopSampling = false; 		//Infrapuna-anturin sulkeminen
-	
+	private EV3IRSensor infraredSensor;	//kahva sensoriin
+	private float distance;	//pit‰‰ et‰isyyden muistissa
+	private boolean stopSampling;	//Infrapuna-anturin sulkeminen
 	
 	/**
-	 * M√§√§rittelee infrapuna-anturin
-	 * @param sensor
+	 * Luo olion. 
+	 * @param sensor Sensorikahva.
 	 */
-	public IRSensor(EV3IRSensor sensor) {
+	public IrSensor(EV3IRSensor sensor) {
 		this.infraredSensor = sensor;
+		this.stopSampling = false;
 	}
 	
 	/** 
-	 * Palauttaa et√§isyyslukeman
-	 * @return Luokan distance-muuttujan arvo (float)
+	 * Palauttaa et‰isyyslukeman.
+	 * @return distance Et‰isyys kohteeseen.
 	 */
-	public float getDistance () {
+	public float GetDistance () {
 		return this.distance;
 	}
 	
 	/** 
-	 * Sulkee infrapuna-anturin
+	 * Sulkee IRSensorin.
 	 */
 	public void stopSampling(){
 		stopSampling = true;
 	}
 	
 	/** 
-	 * Ottaa lukemia
+	 * Mittaa et‰isyytt‰.
 	 */
 	public void run() {
 		while (!stopSampling) {
