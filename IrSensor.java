@@ -28,7 +28,7 @@ public class IrSensor extends Thread {
 	 * Palauttaa etäisyyslukeman.
 	 * @return distance Etäisyys kohteeseen.
 	 */
-	public float GetDistance () {
+	public float getDistance () {
 		return this.distance;
 	}
 	
