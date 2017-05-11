@@ -1,43 +1,44 @@
 import lejos.hardware.port.SensorPort;
 import lejos.hardware.sensor.EV3TouchSensor;
+
 /**
 *
-* T√§√§lt√§ katsotaan onko kosketussensoria painettu vai ei.
+* Kosketussensori k‰sittely.
 *
-* @version 0.1
-* @author Mikael R√§m√∂
+* @version 1.0
+* @author Mikael R‰mˆ
+* 
 */
-
-public class BumpSensor extends Thread{
-	
-
+public class BumpSensor extends Thread {	
 	
 	EV3TouchSensor ts = new EV3TouchSensor(SensorPort.S2);
 	
+	private boolean stopSampling = false;
+	private float bumpSample;
 
-	boolean stopSampling = false;
-	float bumpSample;
-	
-	/** Pys√§ytt√§√§ homman.
-	*/
+	/**
+	 * Pys‰ytt‰‰ sensorin.
+	 */
 	public void stopSampling(){
 		stopSampling = true;
 	}
 	
-	/** Palauttaa painallus tuloksen.
-	*/
+	/** 
+	 * Palauttaa painallus tuloksen.
+	 */
 	public float getSample(){
 		return this.bumpSample;
 	}
 	
-	/** Etsii koko ajan painalluksen tulosta.
-	*/
+	/** 
+	 * Lukee kosketussensorin arvoa.
+	 */
 	public void run () {
-			while (!stopSampling) {
-				float[] sample = new float[ts.sampleSize()];
-				ts.fetchSample(sample, 0);
-				bumpSample = sample[0];
-
+			
+		while (!stopSampling) {		 		
+			float[] sample = new float[ts.sampleSize()];				
+			ts.fetchSample(sample, 0);				
+			bumpSample = sample[0];
 		}
 	}
 }
